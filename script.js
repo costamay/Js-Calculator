@@ -3,6 +3,7 @@
 const input = document.querySelector(".input");
 const result = document.querySelector(".result");
 const deleteBtn = document.querySelector(".delete");
+const clearBtn = document.querySelector(".clear");
 const keys = document.querySelectorAll(".bottom span");
 
 let operation = "";
@@ -112,6 +113,13 @@ function clearInput (e) {
   input.innerHTML = operation;
 
 }
+clearBtn.addEventListener("click", function() {
+  input.innerHTML = "";
+  result.innerHTML = "";
+
+
+
+});
 
 deleteBtn.addEventListener("click", clearInput);
 keys.forEach(key => {
