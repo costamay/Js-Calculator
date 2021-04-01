@@ -113,3 +113,8 @@ function clearInput (e) {
 
 }
 
+deleteBtn.addEventListener("click", clearInput);
+keys.forEach(key => {
+  key.addEventListener("click", handleKeyPress);
+  key.addEventListener("click", evaluate);
+});
