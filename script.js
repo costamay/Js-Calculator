@@ -98,6 +98,18 @@ function evaluate(e) {
 
 }
 
+function clearInput (e) {
 
+  if (e.ctrlKey) {
+    operation = "";
+    answer = "";
+    input.innerHTML = operation;
+    result.innerHTML = answer;
+    return;
+  }
 
-});
+  operation = operation.slice(0, -1);
+  input.innerHTML = operation;
+
+}
+
