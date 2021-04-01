@@ -53,3 +53,51 @@ function handleKeyPress (e) {
 
 }
 
+function evaluate(e) {
+  const key = e.target.dataset.key;
+  const lastChar = operation[operation.length - 1];
+
+  if (key === "=" && operators.indexOf(lastChar) !== -1) {
+    operation = operation.slice(0, -1);
+  }
+
+  if (operation.length === 0) {
+    answer = "";
+    result.innerHTML = answer;
+    return;
+  }
+
+  try {
+
+    if (operation[0] === "0" && operation[1] !== "." && operation.length > 1) {
+      operation = operation.slice(1);
+    }
+
+    const final = operation.replace(/x/g, "*").replace(/÷/g, "/");
+    answer = +(eval(final)).toFixed(5);
+
+    if (key === "=") {
+      decimalAdded = false;
+      operation = `${answer}`;
+      answer = "";
+      input.innerHTML = operation;
+      result.innerHTML = answer;
+      return;
+    }
+
+    result.innerHTML = answer;
+
+  } catch (e) {
+    if (key === "=") {
+      decimalAdded = false;
+      input.innerHTML = `<span class="error">${operation}</span>`;
+      result.innerHTML = `<span class="error">Bad Expression</span>`;
+    }
+    console.log(e);
+  }
+
+}
+
+
+
+});
